@@ -12,14 +12,21 @@ struct SearchLeagueView: View {
 	@EnvironmentObject var searchLeagueVM: SearchLeagueViewModel
     var body: some View {
 		NavigationStack {
-			ScrollView {
-			Text("\(searchLeague)")
-				.searchable(text: $searchLeague)
-				ForEach(searchLeagueVM.leagues, id: \.self) { league in
+			List {
+				ForEach(searchResult, id: \.idLeague) { league in
 					Text(league.strLeagueAlternate ?? "")
 					Text(league.strLeague ?? "")
 					Text(league.strSport ?? "")
 					Text(league.idLeague ?? "")
+				}
+			}
+			.searchable(text: $searchLeague) {
+				ForEach(searchResult, id: \.idLeague) { league in
+					if let leagueExist = league.strLeague  {
+						Text(leagueExist).searchCompletion(leagueExist)
+					} else {
+						Text("Not found")
+					}
 				}
 			}
 			.task {
@@ -30,12 +37,19 @@ struct SearchLeagueView: View {
 				}
 			}
 		}
-    }
+	}
+	var searchResult: [League] {
+		if searchLeague.isEmpty {
+			return searchLeagueVM.leagues
+		} else {
+			return self.searchLeagueVM.leagues.filter { $0.strLeague!.contains(searchLeague) }
+		}
+	}
 }
 
 struct SearchLeagueView_Previews: PreviewProvider {
-    static var previews: some View {
-        SearchLeagueView()
+	static var previews: some View {
+		SearchLeagueView()
 			.environmentObject(SearchLeagueViewModel())
-    }
+	}
 }

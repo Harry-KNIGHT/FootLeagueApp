@@ -29,4 +29,6 @@ class SearchLeagueViewModel: ObservableObject {
 			throw error
 		}
 	}
+
+	
 }
