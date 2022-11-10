@@ -14,18 +14,15 @@ struct SearchLeagueView: View {
 		NavigationStack {
 			List {
 				ForEach(searchResult, id: \.idLeague) { league in
-					Text(league.strLeagueAlternate ?? "")
-					Text(league.strLeague ?? "")
-					Text(league.strSport ?? "")
-					Text(league.idLeague ?? "")
+					if let leagueNotNil = league.strLeague {
+						Text(leagueNotNil)
+					}
 				}
 			}
 			.searchable(text: $searchLeague) {
 				ForEach(searchResult, id: \.idLeague) { league in
 					if let leagueExist = league.strLeague  {
 						Text(leagueExist).searchCompletion(leagueExist)
-					} else {
-						Text("Not found")
 					}
 				}
 			}
