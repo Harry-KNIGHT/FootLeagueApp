@@ -19,6 +19,8 @@
 		3C5DE619291D2CF10077E89F /* TeamModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DE618291D2CF10077E89F /* TeamModel.swift */; };
 		3C5DE61E291D2FA70077E89F /* TeamRessources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DE61D291D2FA70077E89F /* TeamRessources.swift */; };
 		3C5DE620291D34E20077E89F /* TeamAsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DE61F291D34E20077E89F /* TeamAsyncImageView.swift */; };
+		3C5DE622291D3C9F0077E89F /* SearchLeagueViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DE621291D3C9F0077E89F /* SearchLeagueViewModel.swift */; };
+		3C5DE625291D3D360077E89F /* LeagueModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C5DE624291D3D360077E89F /* LeagueModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		3C5DE618291D2CF10077E89F /* TeamModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamModel.swift; sourceTree = "<group>"; };
 		3C5DE61D291D2FA70077E89F /* TeamRessources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamRessources.swift; sourceTree = "<group>"; };
 		3C5DE61F291D34E20077E89F /* TeamAsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamAsyncImageView.swift; sourceTree = "<group>"; };
+		3C5DE621291D3C9F0077E89F /* SearchLeagueViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLeagueViewModel.swift; sourceTree = "<group>"; };
+		3C5DE624291D3D360077E89F /* LeagueModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				3C5DE618291D2CF10077E89F /* TeamModel.swift */,
+				3C5DE624291D3D360077E89F /* LeagueModel.swift */,
 				3C5DE61D291D2FA70077E89F /* TeamRessources.swift */,
 			);
 			path = Model;
@@ -162,8 +167,17 @@
 			isa = PBXGroup;
 			children = (
 				3C5DE61B291D2F7A0077E89F /* Screens */,
+				3C5DE623291D3D1F0077E89F /* ViewModel */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3C5DE623291D3D1F0077E89F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				3C5DE621291D3C9F0077E89F /* SearchLeagueViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,9 +310,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C5DE625291D3D360077E89F /* LeagueModel.swift in Sources */,
 				3C5DE61E291D2FA70077E89F /* TeamRessources.swift in Sources */,
 				3C5DE5E9291D28370077E89F /* FootLeagueApp.swift in Sources */,
 				3C5DE619291D2CF10077E89F /* TeamModel.swift in Sources */,
+				3C5DE622291D3C9F0077E89F /* SearchLeagueViewModel.swift in Sources */,
 				3C5DE617291D28820077E89F /* SoccerTeamDetailView.swift in Sources */,
 				3C5DE620291D34E20077E89F /* TeamAsyncImageView.swift in Sources */,
 				3C5DE613291D28590077E89F /* SearchLeagueView.swift in Sources */,
