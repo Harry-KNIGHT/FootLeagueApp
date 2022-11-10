@@ -10,10 +10,12 @@ import SwiftUI
 @main
 struct FootLeagueApp: App {
 	@StateObject var leagueVM = SearchLeagueViewModel()
+	@StateObject var soccerTeamVM = SoccerTeamViewModel()
     var body: some Scene {
         WindowGroup {
             SearchLeagueView()
 				.environmentObject(leagueVM)
+				.environmentObject(soccerTeamVM)
         }
     }
 }
