@@ -8,8 +8,11 @@
 import Foundation
 
 // MARK: - Team
-struct Team: Identifiable, Codable {
-	var id = UUID()
+struct TeamResponse: Codable {
+	let teams: [Team]
+}
+
+struct Team: Codable {
 	let idTeam, idSoccerXML, idAPIfootball: String?
 	let intLoved: String?
 	let strTeam: String?

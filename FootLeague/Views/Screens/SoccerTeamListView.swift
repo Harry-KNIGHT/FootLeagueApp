@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct SoccerTeamListView: View {
-
+	@EnvironmentObject var soccerTeamVM: SoccerTeamViewModel
 	let columns = [
-	 GridItem(.flexible()),
-	 GridItem(.flexible()),
+		GridItem(.flexible()),
+		GridItem(.flexible()),
 	]
 
-    var body: some View {
+	var body: some View {
 		NavigationStack {
 			ScrollView {
 				LazyVGrid(columns: columns) {
-					ForEach(teams) { team in
+					ForEach(soccerTeamVM.soccerTeams, id: \.idTeam) { team in
 						if let badge = team.strTeamBadge {
 							NavigationLink(destination: SoccerTeamDetailView(team: team)) {
 								TeamAsyncImageView(team: team, image: badge)
@@ -26,13 +26,22 @@ struct SoccerTeamListView: View {
 						}
 					}
 				}
+				.task {
+					do {
+						try await soccerTeamVM.getSoccerTeam()
+					} catch {
+						print(error.localizedDescription)
+					}
+					print(soccerTeamVM.soccerTeams.count)
+				}
 			}
 		}
-    }
+	}
 }
 
 struct SoccerTeamListView_Previews: PreviewProvider {
-    static var previews: some View {
-        SoccerTeamListView()
-    }
+	static var previews: some View {
+		SoccerTeamListView()
+			.environmentObject(SoccerTeamViewModel())
+	}
 }
