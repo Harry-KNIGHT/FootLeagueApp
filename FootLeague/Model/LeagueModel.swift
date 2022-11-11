@@ -15,3 +15,8 @@ struct League: Codable, Hashable {
 	let idLeague, strLeague, strSport: String?
 	let strLeagueAlternate: String?
 }
+
+
+extension League {
+	static let sample = League(idLeague: "133652", strLeague: "4331", strSport: "Soccer", strLeagueAlternate: nil)
+}
