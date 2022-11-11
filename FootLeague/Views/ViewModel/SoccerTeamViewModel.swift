@@ -11,20 +11,10 @@ class SoccerTeamViewModel: ObservableObject {
 	@Published public var soccerTeams = [Team]()
 
 	func getSoccerTeam(leagueID: String) async throws {
-		let url = URL(string: "https://www.thesportsdb.com/api/v1/json/50130162/lookup_all_teams.php?id=\(leagueID)")
-
-		guard let url = url else { return }
-
-		let (data, response) = try await URLSession.shared.data(from: url)
-
-		guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-			throw ApiError.outOfBounds
-		}
-
 		do {
-			let teams = try JSONDecoder().decode(TeamResponse.self, from: data)
+			let team = try await TeamApi.fetchSoccerTeam(leagueID)
 			DispatchQueue.main.async {
-				self.soccerTeams = teams.teams
+				self.soccerTeams = team.teams
 			}
 		} catch {
 			throw error
