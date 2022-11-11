@@ -13,7 +13,7 @@ struct SearchLeagueView: View {
     var body: some View {
 		NavigationStack {
 			List {
-				ForEach(searchResult, id: \.idLeague) { league in
+				ForEach(searchLeagueVM.searchResult(searchLeague: searchLeague), id: \.idLeague) { league in
 					NavigationLink(destination: SoccerTeamListView(leagueId: league.idLeague ?? "")) {
 						if let leagueNotNil = league.strLeague {
 							Text(leagueNotNil)
@@ -22,7 +22,7 @@ struct SearchLeagueView: View {
 				}
 			}
 			.searchable(text: $searchLeague) {
-				ForEach(searchResult, id: \.idLeague) { league in
+				ForEach(searchLeagueVM.searchResult(searchLeague: searchLeague), id: \.idLeague) { league in
 					if let leagueExist = league.strLeague  {
 						Text(leagueExist).searchCompletion(leagueExist)
 					}
@@ -35,13 +35,6 @@ struct SearchLeagueView: View {
 					print("\(error.localizedDescription)")
 				}
 			}
-		}
-	}
-	var searchResult: [League] {
-		if searchLeague.isEmpty {
-			return searchLeagueVM.leagues
-		} else {
-			return self.searchLeagueVM.leagues.filter { $0.strLeague!.contains(searchLeague) }
 		}
 	}
 }

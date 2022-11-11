@@ -29,6 +29,13 @@ class SearchLeagueViewModel: ObservableObject {
 			throw error
 		}
 	}
+	func searchResult(searchLeague: String) -> [League] {
+		if searchLeague.isEmpty {
+			return leagues
+		} else {
+			return self.leagues.filter { $0.strLeague!.contains(searchLeague) }
+		}
+	}
 
 	
 }
