@@ -13,6 +13,7 @@ struct SoccerTeamListView: View {
 		GridItem(.flexible()),
 		GridItem(.flexible()),
 	]
+	let leagueId: String
 
 	var body: some View {
 		NavigationStack {
@@ -28,7 +29,7 @@ struct SoccerTeamListView: View {
 				}
 				.task {
 					do {
-						try await soccerTeamVM.getSoccerTeam()
+						try await soccerTeamVM.getSoccerTeam(leagueID: leagueId)
 					} catch {
 						print(error.localizedDescription)
 					}
@@ -41,7 +42,7 @@ struct SoccerTeamListView: View {
 
 struct SoccerTeamListView_Previews: PreviewProvider {
 	static var previews: some View {
-		SoccerTeamListView()
+		SoccerTeamListView(leagueId: "3459")
 			.environmentObject(SoccerTeamViewModel())
 	}
 }

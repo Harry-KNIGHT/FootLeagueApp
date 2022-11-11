@@ -14,7 +14,7 @@ struct SearchLeagueView: View {
 		NavigationStack {
 			List {
 				ForEach(searchResult, id: \.idLeague) { league in
-					NavigationLink(destination: SoccerTeamListView()) {
+					NavigationLink(destination: SoccerTeamListView(leagueId: league.idLeague ?? "")) {
 						if let leagueNotNil = league.strLeague {
 							Text(leagueNotNil)
 						}

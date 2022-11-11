@@ -10,8 +10,8 @@ import Foundation
 class SoccerTeamViewModel: ObservableObject {
 	@Published public var soccerTeams = [Team]()
 
-	func getSoccerTeam() async throws {
-		let url = URL(string: "https://www.thesportsdb.com/api/v1/json/50130162/lookup_all_teams.php?id=4331")
+	func getSoccerTeam(leagueID: String) async throws {
+		let url = URL(string: "https://www.thesportsdb.com/api/v1/json/50130162/lookup_all_teams.php?id=\(leagueID)")
 
 		guard let url = url else { return }
 
