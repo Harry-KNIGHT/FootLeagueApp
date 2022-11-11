@@ -11,7 +11,7 @@ class SoccerTeamViewModel: ObservableObject {
 	@Published public var soccerTeams = [Team]()
 
 	func getSoccerTeam() async throws {
-		let url = URL(string: "https://www.thesportsdb.com/api/v1/json/50130162/search_all_teams.php?l=French%20Ligue%201")
+		let url = URL(string: "https://www.thesportsdb.com/api/v1/json/50130162/lookup_all_teams.php?id=4331")
 
 		guard let url = url else { return }
 
