@@ -36,6 +36,7 @@ struct SoccerTeamListView: View {
 					print(soccerTeamVM.soccerTeams.count)
 				}
 			}
+			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }
